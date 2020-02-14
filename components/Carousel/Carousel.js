@@ -17,3 +17,91 @@
     <div class="right-button"> > </div>
   </div>
 */
+const carouselContainer = document.querySelector('.carousel-container');
+
+carouselContainer.append(createCarousel());
+
+function createCarousel() {
+  // Create elements
+  const carousel = document.createElement('div');
+  const leftButton = document.createElement('div');
+  const mountainsImg = document.createElement('img');
+  const computerImg = document.createElement('img');
+  const treesImg = document.createElement('img');
+  const turntableImg = document.createElement('img');
+  const rightButton = document.createElement('div');
+
+  // Add classes
+  carousel.classList.add('carousel');
+  leftButton.classList.add('left-button');
+  rightButton.classList.add('right-button');
+
+  // Add content
+  leftButton.textContent = '<';
+  mountainsImg.src = './assets/carousel/mountains.jpeg';
+  computerImg.src = './assets/carousel/computer.jpeg';
+  treesImg.src = './assets/carousel/trees.jpeg';
+  turntableImg.src = './assets/carousel/turntable.jpeg';
+  rightButton.textContent = '>';
+
+  // Add Styles
+  mountainsImg.style.display = 'block';
+  // mountainsImg.style.width = '100%';
+
+  // Add event listeners
+  const imgArray = [mountainsImg, computerImg, treesImg, turntableImg];
+  let currentImg = 0;
+
+  leftButton.addEventListener('click', () => {
+    // const startImg = imgArray[currentImg];
+    // startImg.style.width = 0;
+    // startImg.style.transform = `translateX(-${startImg.offsetWidth}px)`;
+    // startImg.addEventListener('transitionend', () => {
+    //   startImg.style.display = 'none';
+    //   startImg.style.transform = '';
+    // });
+    imgArray[currentImg].style.display = 'none';
+    // If not on the last image of array
+    if (currentImg + 1 < imgArray.length) {
+      // imgArray[currentImg + 1].style.width = '100%';
+      imgArray[currentImg + 1].style.display = 'block';
+      currentImg += 1;
+    }
+    // If on last image of array
+    else {
+      // imgArray[0].style.width = '100%';
+      imgArray[0].style.display = 'block';
+      currentImg = 0;
+    }
+  });
+
+  rightButton.addEventListener('click', () => {
+    // const startImg = imgArray[currentImg];
+    // startImg.style.width = 0;
+    // startImg.style.transform = `translateX(${startImg.offsetWidth}px)`;
+    // startImg.addEventListener('transitionend', () => {
+    //   startImg.style.display = 'none';
+    //   startImg.style.transform = '';
+    // });
+    imgArray[currentImg].style.display = 'none';
+    // If not on the last image of array
+    if (currentImg !== 0) {
+      // imgArray[currentImg - 1].objectPosition = 'left';
+      // imgArray[currentImg - 1].style.width = '100%';
+      imgArray[currentImg - 1].style.display = 'block';
+      currentImg -= 1;
+    }
+    // If on last image of array
+    else {
+      currentImg = imgArray.length - 1;
+      // imgArray[currentImg].objectPosition = 'left';
+      imgArray[currentImg].style.display = 'block';
+      // imgArray[currentImg].style.width = '100%';
+    }
+  });
+
+  // Append elements
+  carousel.append(leftButton, mountainsImg, computerImg, treesImg, turntableImg, rightButton);
+
+  return carousel;
+}
