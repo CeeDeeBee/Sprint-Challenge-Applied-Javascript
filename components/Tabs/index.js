@@ -23,5 +23,13 @@ function createTab(item) {
     // Add content
     tab.textContent = item;
 
+    // Add event listener
+    tab.addEventListener('click', () => {
+        const articles = document.querySelectorAll('.card');
+        articles.forEach(article => {
+            !(article.getAttribute('data-topic') === tab.textContent) ? article.style.display = 'none': article.style.display = 'block'
+        })
+    })
+
     return tab
 }
