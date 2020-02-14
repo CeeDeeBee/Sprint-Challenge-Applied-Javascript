@@ -17,3 +17,70 @@
     <div class="right-button"> > </div>
   </div>
 */
+const carouselContainer = document.querySelector('.carousel-container');
+
+carouselContainer.append(createCarousel());
+
+function createCarousel() {
+  // Create elements
+  const carousel = document.createElement('div');
+  const leftButton = document.createElement('div');
+  const mountainsImg = document.createElement('img');
+  const computerImg = document.createElement('img');
+  const treesImg = document.createElement('img');
+  const turntableImg = document.createElement('img');
+  const rightButton = document.createElement('div');
+
+  // Add classes
+  carousel.classList.add('carousel');
+  leftButton.classList.add('left-button');
+  rightButton.classList.add('right-button');
+
+  // Add content
+  leftButton.textContent = '<';
+  mountainsImg.src = './assets/carousel/mountains.jpeg';
+  computerImg.src = './assets/carousel/computer.jpeg';
+  treesImg.src = './assets/carousel/trees.jpeg';
+  turntableImg.src = './assets/carousel/turntable.jpeg';
+  rightButton.textContent = '>';
+
+  // Add Styles
+  mountainsImg.style.display = 'block';
+
+  // Add event listeners
+  const imgArray = [mountainsImg, computerImg, treesImg, turntableImg];
+  let currentImg = 0;
+
+  leftButton.addEventListener('click', () => {
+    imgArray[currentImg].style.display = 'none';
+    // If not on the last image of array
+    if (currentImg + 1 < imgArray.length) {
+      imgArray[currentImg + 1].style.display = 'block';
+      currentImg += 1;
+    }
+    // If on last image of array
+    else {
+      imgArray[0].style.display = 'block';
+      currentImg = 0;
+    }
+  });
+
+  rightButton.addEventListener('click', () => {
+    imgArray[currentImg].style.display = 'none';
+    // If not on the last image of array
+    if (currentImg !== 0) {
+      imgArray[currentImg - 1].style.display = 'block';
+      currentImg -= 1;
+    }
+    // If on last image of array
+    else {
+      currentImg = imgArray.length - 1;
+      imgArray[currentImg].style.display = 'block';
+    }
+  });
+
+  // Append elements
+  carousel.append(leftButton, mountainsImg, computerImg, treesImg, turntableImg, rightButton);
+
+  return carousel;
+}
