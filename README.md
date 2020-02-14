@@ -30,18 +30,28 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+    DOM stands for Document Object Model which represents an HTML document. This object can be used with JavaScript in order to dynamically manipulate web pages. The DOM uses a tree structure to represent the elements which are refered to as nodes.
+
 2. What is an event?
+
+    Events are mostly made up of user interactions with web pages. When a user performs one of the event actions an event is triggered.
 
 3. What is an event listener?
 
+    Event listeners are written in JavaScript and can detect when a specific event has triggered on a specific element. Event listeners take a callback and execute that callback when they are triggered.
+
 4. Why would we convert a NodeList into an Array?
+
+    NodeLists lack many of the Array prototype methods such as map and reduce. NodeLists do have a forEach method but if you want more complex methods than it may be a good idea to convert a NodeList into an array.
 
 5. What is a component?
 
+    A component is a reusable portion of code that includes HTML, CSS, and JS elements. Components are used to dynamically create many similar HTML elements on a page without having to write new code for each element.
+
 ### Git Set up
 
-* [ ] Fork the project into your GitHub user account
-* [ ] Clone the forked project into a directory on your machine
+* [x] Fork the project into your GitHub user account
+* [x] Clone the forked project into a directory on your machine
 * [ ] Create a pull request before you start working on the project requirements.  You will continuously push your updates throughout the project.
 * [ ] You are now ready to build this project with your preferred IDE
 
